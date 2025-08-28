@@ -383,7 +383,7 @@ export const MENUITEMS: any = [
         type: "link",
         active: false,
         selected: false,
-        title: "Purchases",
+        title: "Purchases Entry",
       },
       {
         path: `transactions/purchase-returns`,
@@ -397,7 +397,7 @@ export const MENUITEMS: any = [
         type: "link",
         active: false,
         selected: false,
-        title: "Sales",
+        title: "Sales Entry",
       },
       {
         path: `transactions/sales-returns`,
