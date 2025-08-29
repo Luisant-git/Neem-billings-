@@ -92,6 +92,7 @@ const PurchaseReturns = () => {
                     <Table bordered>
                       <thead>
                         <tr>
+                          <th>Supplier Name</th>
                           <th>Entry Number</th>
                           <th>Entry Date</th>
                           <th>Item Number</th>
@@ -102,6 +103,16 @@ const PurchaseReturns = () => {
                       <tbody>
                         {returnDetails.map((item) => (
                           <tr key={item.id}>
+                            <td>
+                              <Form.Select
+                                value={item.supplierName || ''}
+                                onChange={(e) => updateReturnDetail(item.id, 'supplierName', e.target.value)}
+                                required
+                              >
+                                <option value="">Select Supplier</option>
+                                <option value="ABC Neem Suppliers">ABC Neem Suppliers</option>
+                              </Form.Select>
+                            </td>
                             <td>
                               <Form.Control
                                 type="text"

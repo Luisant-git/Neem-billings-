@@ -90,6 +90,7 @@ const SalesReturns = () => {
                     <Table bordered>
                       <thead>
                         <tr>
+                          <th>Customer Name</th>
                           <th>Invoice Number</th>
                           <th>Invoice Date</th>
                           <th>Item Number</th>
@@ -100,6 +101,16 @@ const SalesReturns = () => {
                       <tbody>
                         {returnDetails.map((item) => (
                           <tr key={item.id}>
+                            <td>
+                              <Form.Select
+                                value={item.customerName || ''}
+                                onChange={(e) => updateReturnDetail(item.id, 'customerName', e.target.value)}
+                                required
+                              >
+                                <option value="">Select Customer</option>
+                                <option value="XYZ Retail Store">XYZ Retail Store</option>
+                              </Form.Select>
+                            </td>
                             <td>
                               <Form.Control
                                 type="text"

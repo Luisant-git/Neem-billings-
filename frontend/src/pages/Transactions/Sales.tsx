@@ -144,17 +144,7 @@ const Sales = () => {
                         />
                       </Form.Group>
                     </Col>
-                    <Col md={6}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Bill Number</Form.Label>
-                        <Form.Control
-                          type="text"
-                          value={formData.billNumber}
-                          onChange={(e) => setFormData({...formData, billNumber: e.target.value})}
-                          required
-                        />
-                      </Form.Group>
-                    </Col>
+
                     <Col md={6}>
                       <Form.Group className="mb-3">
                         <Form.Label>Payment Type</Form.Label>
