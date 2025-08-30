@@ -362,6 +362,20 @@ export const MENUITEMS: any = [
         selected: false,
         title: "Customer Master",
       },
+      {
+        path: `masters/category-master`,
+        type: "link",
+        active: false,
+        selected: false,
+        title: "Category Master",
+      },
+      {
+        path: `masters/open-stock`,
+        type: "link",
+        active: false,
+        selected: false,
+        title: "Open Stock",
+      },
     ],
   },
   {
@@ -371,13 +385,7 @@ export const MENUITEMS: any = [
     active: false,
     selected: false,
     children: [
-      {
-        path: `transactions/open-stock`,
-        type: "link",
-        active: false,
-        selected: false,
-        title: "Open Stock",
-      },
+
       {
         path: `transactions/purchases`,
         type: "link",
@@ -419,6 +427,13 @@ export const MENUITEMS: any = [
         active: false,
         selected: false,
         title: "Receipt Entry",
+      },
+      {
+        path: `transactions/production`,
+        type: "link",
+        active: false,
+        selected: false,
+        title: "Production",
       },
     ],
   },

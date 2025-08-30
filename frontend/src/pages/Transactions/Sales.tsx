@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import { Card, Row, Col, Form, Button, Table } from 'react-bootstrap';
 import { Plus, Minus, Save, Printer } from 'lucide-react';
+import Select from 'react-select';
 
 const Sales = () => {
+  const customers = [
+    { value: 'XYZ Retail Store', label: 'XYZ Retail Store' },
+    { value: 'ABC Distributors', label: 'ABC Distributors' },
+    { value: 'Green Market Co', label: 'Green Market Co' },
+    { value: 'Organic Traders', label: 'Organic Traders' },
+    { value: 'Natural Products Hub', label: 'Natural Products Hub' }
+  ];
+
   const [formData, setFormData] = useState({
     customerName: '',
     customerNumber: '',
@@ -101,14 +110,15 @@ const Sales = () => {
                     <Col md={6}>
                       <Form.Group className="mb-3">
                         <Form.Label>Customer Name</Form.Label>
-                        <Form.Select
-                          value={formData.customerName}
-                          onChange={(e) => setFormData({...formData, customerName: e.target.value})}
+                        <Select
+                          options={customers}
+                          value={customers.find(c => c.value === formData.customerName) || null}
+                          onChange={(selectedOption) => setFormData({...formData, customerName: selectedOption?.value || ''})}
+                          placeholder="Search and select customer..."
+                          isSearchable
+                          isClearable
                           required
-                        >
-                          <option value="">Select Customer</option>
-                          <option value="XYZ Retail Store">XYZ Retail Store</option>
-                        </Form.Select>
+                        />
                       </Form.Group>
                     </Col>
                     <Col md={6}>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Row, Col, Form, Button, Table } from 'react-bootstrap';
 import { Plus, Save, Printer } from 'lucide-react';
+import Select from 'react-select';
 
 const PurchaseReturns = () => {
   const [returnDetails, setReturnDetails] = useState([
@@ -104,14 +105,18 @@ const PurchaseReturns = () => {
                         {returnDetails.map((item) => (
                           <tr key={item.id}>
                             <td>
-                              <Form.Select
-                                value={item.supplierName || ''}
-                                onChange={(e) => updateReturnDetail(item.id, 'supplierName', e.target.value)}
-                                required
-                              >
-                                <option value="">Select Supplier</option>
-                                <option value="ABC Neem Suppliers">ABC Neem Suppliers</option>
-                              </Form.Select>
+                              <Select
+                                options={[
+                                  { value: 'ABC Suppliers', label: 'ABC Suppliers' },
+                                  { value: 'Natural Products Ltd', label: 'Natural Products Ltd' },
+                                  { value: 'Organic Neem Co', label: 'Organic Neem Co' }
+                                ]}
+                                value={[{ value: 'ABC Suppliers', label: 'ABC Suppliers' }, { value: 'Natural Products Ltd', label: 'Natural Products Ltd' }, { value: 'Organic Neem Co', label: 'Organic Neem Co' }].find(s => s.value === item.supplierName) || null}
+                                onChange={(selectedOption) => updateReturnDetail(item.id, 'supplierName', selectedOption?.value || '')}
+                                placeholder="Search supplier..."
+                                isSearchable
+                                isClearable
+                              />
                             </td>
                             <td>
                               <Form.Control

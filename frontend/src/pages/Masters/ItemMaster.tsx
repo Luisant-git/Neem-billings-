@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
 import { Card, Row, Col, Form, Button, Table, Modal } from 'react-bootstrap';
 import { Plus, Edit, Trash2, Search } from 'lucide-react';
+import Select from 'react-select';
 
 const ItemMaster = () => {
   const [showModal, setShowModal] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [supplierSearch, setSupplierSearch] = useState('');
+  
+  const suppliers = [
+    { value: 'ABC Suppliers', label: 'ABC Suppliers' },
+    { value: 'Natural Products Ltd', label: 'Natural Products Ltd' },
+    { value: 'Organic Neem Co', label: 'Organic Neem Co' },
+    { value: 'Green Earth Suppliers', label: 'Green Earth Suppliers' },
+    { value: 'Pure Nature Industries', label: 'Pure Nature Industries' }
+  ];
+  
+  const filteredSuppliers = suppliers.filter(supplier => 
+    supplier.label.toLowerCase().includes(supplierSearch.toLowerCase())
+  );
 
   const [formData, setFormData] = useState({
     itemCode: '',
@@ -227,14 +241,15 @@ const ItemMaster = () => {
                 <Col md={6}>
                   <Form.Group className="mb-3">
                     <Form.Label>Supplier</Form.Label>
-                    <Form.Select
-                      value={formData.supplier}
-                      onChange={(e) => setFormData({...formData, supplier: e.target.value})}
+                    <Select
+                      options={suppliers}
+                      value={suppliers.find(s => s.value === formData.supplier) || null}
+                      onChange={(selectedOption) => setFormData({...formData, supplier: selectedOption?.value || ''})}
+                      placeholder="Search and select supplier..."
+                      isSearchable
+                      isClearable
                       required
-                    >
-                      <option value="">Select Supplier</option>
-                      <option value="ABC Suppliers">ABC Suppliers</option>
-                    </Form.Select>
+                    />
                   </Form.Group>
                 </Col>
                 <Col md={6}>

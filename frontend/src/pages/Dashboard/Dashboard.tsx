@@ -11,6 +11,7 @@ const Dashboard = () => {
       title: 'Total Stock',
       value: '2,450',
       unit: 'Items',
+      redText: 'PENDING CUSTOMER PAYMENT',
       icon: <Package size={24} />,
       color: 'primary'
     },
@@ -18,6 +19,7 @@ const Dashboard = () => {
       title: "Today's Purchases",
       value: '₹15,240',
       unit: 'Amount',
+      redText: 'TOTAL PURCHASES',
       icon: <ShoppingCart size={24} />,
       color: 'success'
     },
@@ -25,6 +27,7 @@ const Dashboard = () => {
       title: "Today's Sales",
       value: '₹28,560',
       unit: 'Amount',
+      redText: 'TOTAL SALES',
       icon: <TrendingUp size={24} />,
       color: 'info'
     },
@@ -32,6 +35,7 @@ const Dashboard = () => {
       title: 'Pending Returns',
       value: '12',
       unit: 'Items',
+      redText: 'PENDING SUPPLIER PAYMENT',
       icon: <RotateCcw size={24} />,
       color: 'warning'
     }
@@ -55,6 +59,9 @@ const Dashboard = () => {
                       <span className={`badge bg-${card.color}-transparent`}>
                         {card.unit}
                       </span>
+                      <div className="mt-2">
+                        <span className="text-danger fw-bold" style={{fontSize: '12px'}}>{card.redText}</span>
+                      </div>
                     </div>
                     <div className={`p-2 bg-${card.color}-transparent rounded`}>
                       {card.icon}

@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import { Card, Row, Col, Form, Button, Table } from 'react-bootstrap';
 import { Plus, Minus, Save, Printer } from 'lucide-react';
+import Select from 'react-select';
 
 const Purchases = () => {
+  const suppliers = [
+    { value: 'ABC Suppliers', label: 'ABC Suppliers' },
+    { value: 'Natural Products Ltd', label: 'Natural Products Ltd' },
+    { value: 'Organic Neem Co', label: 'Organic Neem Co' },
+    { value: 'Green Earth Suppliers', label: 'Green Earth Suppliers' },
+    { value: 'Pure Nature Industries', label: 'Pure Nature Industries' }
+  ];
+
   const [formData, setFormData] = useState({
     supplierName: '',
     entryNumber: 'PE001',
@@ -103,14 +112,15 @@ const Purchases = () => {
                     <Col md={6}>
                       <Form.Group className="mb-3">
                         <Form.Label>Supplier Name</Form.Label>
-                        <Form.Select
-                          value={formData.supplierName}
-                          onChange={(e) => setFormData({...formData, supplierName: e.target.value})}
+                        <Select
+                          options={suppliers}
+                          value={suppliers.find(s => s.value === formData.supplierName) || null}
+                          onChange={(selectedOption) => setFormData({...formData, supplierName: selectedOption?.value || ''})}
+                          placeholder="Search and select supplier..."
+                          isSearchable
+                          isClearable
                           required
-                        >
-                          <option value="">Select Supplier</option>
-                          <option value="ABC Neem Suppliers">ABC Neem Suppliers</option>
-                        </Form.Select>
+                        />
                       </Form.Group>
                     </Col>
                     <Col md={6}>
